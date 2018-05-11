@@ -1,0 +1,8 @@
+{
+  "name": "accountbook",
+  "app_id": "b24350f2",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
