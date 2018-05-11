@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-// Pages
-import { DashboardPage } from "../dashboard/dashboard";
-
 /**
- * Generated class for the HomePage page.
+ * Generated class for the DashboardPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -13,19 +10,16 @@ import { DashboardPage } from "../dashboard/dashboard";
 
 @IonicPage()
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html',
+  selector: 'page-dashboard',
+  templateUrl: 'dashboard.html',
 })
-export class HomePage {
-  
-  tab1Root: any;
+export class DashboardPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.tab1Root = DashboardPage;
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
+    console.log('ionViewDidLoad DashboardPage');
   }
 
 }
