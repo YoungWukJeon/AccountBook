@@ -13,10 +13,81 @@
 </ion-header>
 
 
-<ion-content padding>
-  <ion-list>
-    <button ion-item>
-      ㅋㅋ
-    </button>
-  </ion-list>
+<ion-content class="padding-zero" style="padding: 0">
+  <ion-card>
+    <ion-card-header>
+      <ion-badge item-left color="transparent">
+        <button ion-button clear icon-only color="transparent" class="font-color-black">
+          <ion-icon icon-left name="ios-arrow-back"></ion-icon>
+        </button>
+      </ion-badge>
+
+      <ion-badge color="transparent" class="font-color-black">
+        <button ion-button clear color="transparent" class="padding-zero font-color-black">
+          2018년 5월
+        </button>
+      </ion-badge>
+      
+      <ion-badge item-right color="transparent">
+        <button ion-button clear icon-only color="transparent" class="font-color-black">
+          <ion-icon name="ios-arrow-forward"></ion-icon>
+        </button>
+      </ion-badge>
+
+      <ion-badge item-right color="transparent">
+        <button ion-button clear color="transparent" class="padding-zero font-color-black">
+          ￦100,000,000
+        </button>
+      </ion-badge>
+    </ion-card-header>
+
+    <ion-list no-lines class="padding-zero">
+      <ion-item *ngFor="let historys of dailyHistory" class="padding-zero">
+        <ion-item class="padding-zero width-full" (click)="historyToggle(historys)">
+          <ion-badge item-left color="">
+            {{ historys.date }}
+          </ion-badge>
+  
+          <ion-badge *ngIf="historys.totalMoney == 0" item-right color="transparent" class="font-color-black">
+            {{ historys.totalCommaMoney }}
+          </ion-badge>
+  
+          <ion-badge *ngIf="historys.totalMoney > 0" item-right color="transparent" class="font-color-green">
+            {{ historys.totalCommaMoney }}
+          </ion-badge>
+  
+          <ion-badge *ngIf="historys.totalMoney < 0" item-right color="transparent" class="font-color-red">
+            {{ historys.totalCommaMoney }}
+          </ion-badge>
+  
+          <ion-badge *ngIf="!historys.open" item-right color="transparent" class="font-color-black">
+            <ion-icon name="ios-arrow-down" class="font-color-black"></ion-icon>
+          </ion-badge>
+
+          <ion-badge *ngIf="historys.open" item-right color="transparent" class="font-color-black">
+            <ion-icon name="ios-arrow-up" class="font-color-black"></ion-icon>
+          </ion-badge>
+        </ion-item>
+  
+        <ion-list [hidden]="!historys.open">
+          <ion-item *ngFor="let history of historys.history" (click)="openHistory(history)" class="margin-zero padding-zero">
+            <span class="margin-side-4 font-size-15">{{ history.time }}</span>
+            <span *ngIf="history.money < 0" class="margin-side-4 font-size-15 font-color-red">{{ history.commaMoney }}</span>
+            <span *ngIf="history.money > 0" class="margin-side-4 font-size-15 font-color-green">{{ history.commaMoney }}</span>
+            <span class="margin-side-4 font-size-15">{{ history.paymentMethod }}</span>
+            <span class="margin-side-4 font-size-15 one-line">{{ history.content }}</span>
+          </ion-item>
+
+          <ion-item *ngIf="historys.history.length == 0" class="margin-zero padding-zero">
+            <span class="margin-side-4 font-size-15 one-line">내역 없음</span>
+          </ion-item>
+        </ion-list>
+
+        <hr class="margin-zero">
+      </ion-item>
+      
+    </ion-list>
+  </ion-card>
+
+  
 </ion-content>

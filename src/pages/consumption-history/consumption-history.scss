@@ -1,3 +1,71 @@
 page-consumption-history {
+    .font-color-black {
+        color: rgb(0, 0, 0)
+    }
 
+    .font-color-red {
+        color: rgb(255, 0, 0)
+    }
+
+    .font-color-green {
+        color: rgb(0, 180, 0)
+    }
+    
+    .padding-zero {
+        padding: 0;
+    }
+
+    .margin-zero {
+        margin: 0;
+    }
+
+    .margin-side-4 {
+        margin-right: 4px;
+        margin-left: 4px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    }
+
+    .width-full {
+        width: 100%;
+    }
+
+    .font-size-15 {
+        font-size: 1.5rem;
+    }
+    
+    .font-style-bold {
+        font-style: bold;
+    }
+
+    .one-line {
+        // display: inline-block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: auto;
+    }
+
+    //-----------------------------------//
+
+    .label-md, .label-ios {
+        margin: 0;
+    }
+
+    .item-md [item-right], .item-ios [item-right] {
+        margin-right: 0;
+    }
+
+    .item-md [item-left], .item-ios [item-left] {
+        margin-left: 8px;
+    }
+
+    .item-md.item-block .item-inner {
+        padding: 0;
+    }
+
+    .card-ios, .card-md, .card-wp {
+        width: 100%;
+        height: auto;
+        margin: 0 0 0 0;
+    }
 }
