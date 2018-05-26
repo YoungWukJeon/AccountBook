@@ -17,8 +17,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class ConsumptionHistoryPage {
 
   dailyHistory: any[];
-
-  
+  monthlyTotalMoney: number = 0;
+  monthlyTotalCommaMoney: string;
 
   addCommaInMoney(money: number)
   {
@@ -100,12 +100,14 @@ export class ConsumptionHistoryPage {
 
     this.dailyHistory.forEach((element) => {
       element.totalCommaMoney = this.addCommaInMoney(element.totalMoney);
+      this.monthlyTotalMoney += element.totalMoney;
 
       element.history.forEach((element2) => {
         element2.commaMoney = this.addCommaInMoney(element2.money);
       });
     });
 
+    this.monthlyTotalCommaMoney = this.addCommaInMoney(this.monthlyTotalMoney);
   }
 
   historyToggle(historys: any) {

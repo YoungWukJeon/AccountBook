@@ -35,8 +35,16 @@
       </ion-badge>
 
       <ion-badge item-right color="transparent">
-        <button ion-button clear color="transparent" class="padding-zero font-color-black">
-          ￦100,000,000
+        <button *ngIf="monthlyTotalMoney == 0" ion-button clear color="transparent" class="padding-zero font-color-black">
+          {{ monthlyTotalCommaMoney }}
+        </button>
+
+        <button *ngIf="monthlyTotalMoney < 0" ion-button clear color="transparent" class="padding-zero font-color-red">
+          {{ monthlyTotalCommaMoney }}
+        </button>
+
+        <button *ngIf="monthlyTotalMoney > 0" ion-button clear color="transparent" class="padding-zero font-color-green">
+          {{ monthlyTotalCommaMoney }}
         </button>
       </ion-badge>
     </ion-card-header>
