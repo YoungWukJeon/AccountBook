@@ -22,19 +22,40 @@ page-consumption-history {
     .margin-side-4 {
         margin-right: 4px;
         margin-left: 4px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+        // font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    }
+
+    .padding-updown-8 {
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    .padding-8 {
+        padding: 8px;
     }
 
     .width-full {
         width: 100%;
     }
+    
+    .font-size-18 {
+        font-size: 1.8rem;
+    }
 
     .font-size-15 {
         font-size: 1.5rem;
     }
+
+    .font-size-13 {
+        font-size: 1.3rem;
+    }
     
-    .font-style-bold {
-        font-style: bold;
+    .font-weight-bold {
+        font-weight: bold;
+    }
+
+    .font-weight-normal {
+        font-weight: normal;
     }
 
     .one-line {
@@ -51,8 +72,10 @@ page-consumption-history {
         margin: 0;
     }
 
-    .item-md [item-right], .item-ios [item-right] {
-        margin-right: 0;
+    .item-md [item-right], .item-ios [item-right], 
+    .item-md [item-start], .item-ios [item-start],
+    .item-md [item-end], .item-ios [item-end] {
+        margin: 0;
     }
 
     .item-md [item-left], .item-ios [item-left] {
@@ -68,4 +91,8 @@ page-consumption-history {
         height: auto;
         margin: 0 0 0 0;
     }
+
+    // .item-inner {
+    //     text-align: center;
+    // }
 }

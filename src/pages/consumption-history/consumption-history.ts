@@ -32,7 +32,7 @@ export class ConsumptionHistoryPage {
 
     this.dailyHistory = [
       {
-        open: false,
+        open: true,
         date: '2018-05-18(금)',
         totalMoney: -11021,
         totalCommaMoney: '',
