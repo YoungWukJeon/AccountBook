@@ -4,10 +4,11 @@ import { ConsumptionCalendarPage } from './consumption-calendar';
 
 @NgModule({
   declarations: [
-    ConsumptionCalendarPage,
+    ConsumptionCalendarPage
   ],
   imports: [
     IonicPageModule.forChild(ConsumptionCalendarPage),
   ],
 })
+
 export class ConsumptionCalendarPageModule {}
