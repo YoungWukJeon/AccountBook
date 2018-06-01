@@ -19,13 +19,24 @@ import { CalendarDay } from '../../models/calendarday-model';
 
 export class ConsumptionCalendarPage {
 
-  calendarHistory: Array<CalendarDay>;
+  calendarHistory: Array<CalendarDay> = [];
+  chunkedCalendarHistory: Array<Array<CalendarDay>>;
   year: number;
   month: number;
   firstDay: number;
   dailyHistory: any[];
   monthlyTotalMoney: number = 0;
   monthlyTotalCommaMoney: string;
+
+  chunkWeekly(array: Array<CalendarDay>, size: number)
+  {
+    let results: Array<Array<CalendarDay>> = [];
+
+    while(array.length)
+      results.push(array.splice(0, size));
+
+    return results;
+  }
 
   addCommaInMoney(money: number)
   {
@@ -37,25 +48,48 @@ export class ConsumptionCalendarPage {
 
   makeCalendarArray()
   {
+    // 현재 달의 날짜 추가
     for( var i = 1; i <= new Date(this.year, this.month + 1, 0).getDate(); ++i )
     {
-      this.calendarHistory.push(new CalendarDay(i, new Date(this.year, this.month, i).getDay()));
+      this.calendarHistory.push(new CalendarDay(i, new Date(this.year, this.month, i).getDay(), 0, false));
+    }
+
+    // 지난 달의 날짜 추가
+    for( var i = 0; i < this.calendarHistory[i].getDay(); ++i )
+    {
+      if( this.month == 0 )
+      {
+        var lastDate = new Date(this.year - 1, 12, 0).getDate();
+        this.calendarHistory.unshift(new CalendarDay(lastDate - i, this.calendarHistory[i].getDay() - i - 1, -1, false));
+      }
+      else
+      {
+        var lastDate = new Date(this.year, this.month, 0).getDate();
+        this.calendarHistory.unshift(new CalendarDay(lastDate - i, this.calendarHistory[i].getDay() - i - 1, -1, false));
+      }     
+    }
+
+    // 다음 달의 날짜 추가
+    for( var firstDate = 1, i = this.calendarHistory[this.calendarHistory.length - firstDate].getDay(); i < 6; ++firstDate, ++i )
+    {
+      if( this.month == 11 )
+        this.calendarHistory.push(new CalendarDay(firstDate, i + 1, 1, false));
+      else
+        this.calendarHistory.push(new CalendarDay(firstDate, i + 1, 1, false));
     }
 
     this.calendarHistory.forEach((element) => {
-      console.log(this.year + "-" + (this.month + 1) + "-" + element.getDate() + ", " + element.getDay());
-    })
+      console.log(this.year + "-0" + this.month + "-" + element.getDate() + ", " + element.getDay());
+    });
 
-    
+    this.chunkedCalendarHistory = this.chunkWeekly(this.calendarHistory, 7);
   }
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
     let now = new Date();
-
     this.year = now.getFullYear();
     this.month = now.getMonth();
-    this.calendarHistory = new Array<CalendarDay> ();
 
     this.makeCalendarArray();
 
